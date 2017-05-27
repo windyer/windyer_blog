@@ -213,10 +213,10 @@ EMAIL_USE_TLS = True                  # 与SMTP服务器通信时，是否启动
 DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
 
 # 七牛配置
-QINIU_ACCESS_KEY = ''
-QINIU_SECRET_KEY = ''
-QINIU_BUCKET_NAME = ''
-QINIU_URL = ''
+QINIU_ACCESS_KEY = '0I7RfvdWbhMU7XZYrYcIIfwYd9VGGrTL-YAIvs0w'
+QINIU_SECRET_KEY = '4dLOB2mrmDtycYsnWxORH3to3eHBnCD4maS9NRIF'
+QINIU_BUCKET_NAME = 'windyer'
+QINIU_URL = 'oqlm4lbid.bkt.clouddn.com'
 
 # 网站标题等内容配置
 WEBSITE_TITLE = u'Windyer`blog'

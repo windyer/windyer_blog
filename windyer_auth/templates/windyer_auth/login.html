@@ -1,0 +1,65 @@
+{% url 'forgetpassword-view' as forgetpassword_url %}
+{% url 'register-view' as register_url %}
+
+<div id="windyer-auth-login">
+    <div class="panel panel-windyer-auth">
+        <div class="panel-heading">
+            <h3 class="panel-title">请登陆</h3>
+        </div>
+        <form id="windyer-auth-login-form" class="clearfix" method="post" role="form">
+            {% csrf_token %}
+            <div class="form-group">
+                <div class="input-group">
+                    <div class="input-group-addon">
+                        <span class="glyphicon glyphicon-user"></span>
+                    </div>
+                    <input id="windyer-auth-login-username"type="text" class="form-control">
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="input-group">
+                    <div class="input-group-addon">
+                        <span class="glyphicon glyphicon-lock"></span>
+                    </div>
+                    <input id="windyer-auth-login-password" type="password" class="form-control">
+                </div>
+            </div>
+            <div id="windyer-auth-forgetpassword"><a href="{{forgetpassword_url}}">忘记密码?</a></div>
+            <button id="windyer-auth-login-button" type="submit" class="btn btn-windyer-auth pull-left">登录</button>
+            <a href="{{register_url}}" type="button" class="btn btn-windyer-auth pull-right">注册</a>
+        </form>
+    </div>
+</div>
+
+
+<script language="javascript" type="text/javascript">
+    $('#windyer-auth-login-form').submit(function(){
+        $.ajax({
+            type:"POST",
+            url:"/usercontrol/login",
+            data:{"username":$("#windyer-auth-login-username").val(),"password":$("#windyer-auth-login-password").val()},
+            beforeSend:function(xhr){
+                xhr.setRequestHeader("X-CSRFToken", $.cookie('csrftoken'));  
+            },
+            success:function(data,textStatus){
+                var errors = data["errors"];
+                if(errors.length==0){
+                    location.replace("/"); 
+                }
+                else{
+                    //alert(errors);
+                    var str = ""
+                    for (var key in errors){
+                        str += errors[key]+"\n";
+                    }
+                    alert(str);
+                }
+                
+            },
+            error:function(XMLHttpRequest, textStatus, errorThrown){
+                alert(XMLHttpRequest.responseText);
+            }
+        });
+        return false;
+    }); 
+</script>

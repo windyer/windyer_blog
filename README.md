@@ -21,7 +21,6 @@ https://windyer.com
 
 ![头像](http://oqlm4lbid.bkt.clouddn.com/touxiang.png)
 ![评论](http://oqlm4lbid.bkt.clouddn.com/pinglun.png)
-![后台](http://oqlm4lbid.bkt.clouddn.com/houtai.png)
 ![首](http://oqlm4lbid.bkt.clouddn.com/shouye.png)
 
 

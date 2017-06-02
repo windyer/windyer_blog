@@ -1,4 +1,4 @@
-windyer.com 网站源码
+windyer_bolg 框架
 =================
 # 概述
 windyer\_blog 是一个基于  **Django1.8**  跟  **Bootstrap3**  开发的 **博客系统** ，实现了一个博客完整的功能。https://windyer.com 就是基于windyer\_blog 搭建的。

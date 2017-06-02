@@ -18,10 +18,10 @@ windyer\_blog 是一个基于  **Django1.8**  跟  **Bootstrap3**  开发的 **�
 https://windyer.com
 
 # 预览
-![首页](http://oqlm4lbid.bkt.clouddn.com/Screenshot%20from%202017-06-02%2009:57:09.png)
-![头像](http://oqlm4lbid.bkt.clouddn.com/Screenshot%20from%202017-06-02%2009:52:44.png)
-![评论](http://oqlm4lbid.bkt.clouddn.com/Screenshot%20from%202017-06-02%2009:55:36.png)
-![后台](http://oqlm4lbid.bkt.clouddn.com/Screenshot%20from%202017-06-02%2009:49:35.png)
+![首页](http://oqlm4lbid.bkt.clouddn.com/shouye.png)
+![头像](http://oqlm4lbid.bkt.clouddn.com/touxiang.png)
+![评论](http://oqlm4lbid.bkt.clouddn.com/pinglun.png)
+![后台](http://oqlm4lbid.bkt.clouddn.com/houtai.png)
 
 
 # 安装运行

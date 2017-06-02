@@ -16,13 +16,14 @@
     tinymce.init({
     selector: "textarea",
     theme: "modern",
+    paste_data_images: true,
     plugins: [
         "advlist autolink lists link image charmap print preview hr anchor pagebreak",
         "searchreplace wordcount visualblocks visualchars code fullscreen",
         "insertdatetime media nonbreaking save table contextmenu directionality",
         "emoticons template paste textcolor colorpicker textpattern",
         "sh4tinymce",
-        "imageupload"
+        "imageupload",
 
     ],
     toolbar1: "insertfile undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image",
@@ -32,6 +33,10 @@
         {title: 'Test template 1', content: 'Test 1'},
         {title: 'Test template 2', content: 'Test 2'}
     ],
+       file_browser_callback: function(field_name, url, type, win) {
+
+            if(type=='image') $('#my_form input').click();
+        },
     upload_image_url: 'http://47.91.44.113:8000/',
     height:"450px",
 });
@@ -44,6 +49,11 @@
 <!-- Container -->
 <div id="container">
 
+<iframe id="form_target" name="form_target" style="display:none"></iframe>
+<form id="my_form" action="/upload/" target="form_target" method="post" enctype="multipart/form-data" style="width:0px;height:0;overflow:hidden">
+    {% csrf_token %}
+    <input name="image" type="file" onchange="$('#my_form').submit();this.value='';">
+</form>
     {% if not is_popup %}
     <!-- Header -->
     <div id="header">

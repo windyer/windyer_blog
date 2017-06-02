@@ -17,10 +17,11 @@ windyer\_blog 是一个基于  **Django1.8**  跟  **Bootstrap3**  开发的 **�
 https://windyer.com
 
 # 预览
-![首页](http://vmaig.qiniudn.com/screenshot/vmaig_01.jpg)
-![头像](http://vmaig.qiniudn.com/screenshot/vmaig_02.jpg)
-![评论](http://vmaig.qiniudn.com/screenshot/vmaig_03.jpg)
-![新闻](http://vmaig.qiniudn.com/screenshot/vmaig_news.jpg)
+![首页](http://oqlm4lbid.bkt.clouddn.com/Screenshot%20from%202017-06-02%2009:57:09.png)
+![头像](http://oqlm4lbid.bkt.clouddn.com/Screenshot%20from%202017-06-02%2009:52:44.png)
+![评论](http://oqlm4lbid.bkt.clouddn.com/Screenshot%20from%202017-06-02%2009:55:36.png)
+![后台](http://oqlm4lbid.bkt.clouddn.com/Screenshot%20from%202017-06-02%2009:49:35.png)
+
 
 # 安装运行
 安装virtualenv :

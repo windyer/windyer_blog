@@ -7,3 +7,6 @@ tx_*.jpg
 *.swp
 *.un~
 .idea/
+*.jpg
+*.png
+*.gif

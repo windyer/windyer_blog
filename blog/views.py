@@ -21,7 +21,8 @@ import datetime
 import time
 import json
 import logging
-
+from qiniu import Auth, put_file, etag, urlsafe_base64_encode
+from django.views.generic import View
 # 缓存
 try:
     cache = caches['memcache']
@@ -31,6 +32,49 @@ except ImportError as e:
 # logger
 logger = logging.getLogger(__name__)
 
+
+def upload(request):
+    f = request.FILES['image']
+    filename= f.name
+    with open('blog/static/img/'+filename, 'wb+') as destination:
+        for chunk in f.chunks():
+            destination.write(chunk)
+
+    qiniu_access_key = settings.QINIU_ACCESS_KEY
+    qiniu_secret_key = settings.QINIU_SECRET_KEY
+    qiniu_bucket_name = settings.QINIU_BUCKET_NAME
+
+    # 构建鉴权对象
+    q = Auth(qiniu_access_key, qiniu_secret_key)
+
+    # 要上传的空间
+    bucket_name = qiniu_bucket_name
+
+    # 上传到七牛后保存的文件名
+    key = filename
+
+    # 生成上传 Token，可以指定过期时间等
+    token = q.upload_token(bucket_name, key, 3600)
+
+    # 要上传文件的本地路径
+    localfile = 'blog/static/img/'+filename
+
+    ret, info = put_file(token, key, localfile)
+    print "1"*100,info
+    print "2"*100,ret
+    assert ret['key'] == key
+    assert ret['hash'] == etag(localfile)
+    image_url = "http://{}/{}?v{}".format(
+        settings.QINIU_URL,
+        filename,
+        time.strftime('%Y%m%d%H%M%S')
+    )
+    return HttpResponse(
+            "<script>top.$('.mce-btn.mce-open').parent().find('.mce-textbox').val('%s').closest('.mce-window').find('.mce-primary').click();</script>" % image_url)
+    #if form.is_valid():
+    #    image = form.save()
+    #    return HttpResponse("<script>top.$('.mce-btn.mce-open').parent().find('.mce-textbox').val('%s').closest('.mce-window').find('.mce-primary').click();</script>" % image.get_absolute_url())
+    #return HttpResponse("<script>alert('%s');</script>" % escapejs('\n'.join([v[0] for k, v in form.errors.items()])))
 
 class BaseMixin(object):
     def get_context_data(self, *args, **kwargs):
